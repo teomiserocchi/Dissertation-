@@ -8,61 +8,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
     <style>
+        /* Stile generale */
         body {
             font-family: Arial, sans-serif;
-            background-color: #FFFFFF;
-            color: #333;
             margin: 0;
             padding: 0;
+            background-color: #FFFFFF;
+            color: #333;
             text-align: center;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            background-color: #386c98;
+            font-family: 'Playfair Display', serif; /* Font Playfair Display */
+            font-size: 2em;
+            background-color: #386c98; /* Blu brillante */
             color: white;
             padding: 20px;
             margin: 0;
-            font-size: 2.5em;
             border-bottom: 4px solid #274a73;
         }
 
         h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif; /* Font Playfair Display */
             color: #005f80;
             margin: 10px 0;
             font-weight: normal;
         }
 
-        /* Contenitore scrollabile */
+        /* Contenitore del Tableau responsivo */
         .dashboard-container {
             width: 100%;
-            max-width: 1200px;
-            height: 800px; /* Altezza massima */
-            overflow: auto; /* Abilita lo scorrimento */
-            margin: 20px auto;
+            height: 80vh; /* Altezza dinamica per schermi mobili */
+            max-height: 1200px; /* Altezza massima */
+            overflow: auto; /* Abilita lo scorrimento verticale */
+            margin: 0 auto;
             border: 2px solid #ffffff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            -webkit-overflow-scrolling: touch; /* Abilita scrolling fluido su iOS */
         }
     </style>
 </head>
 <body>
-    <h1>QoL and Local Government Efficiency: Visual Dashboard</h1>
+    <h1>QoL and Local Government Efficiency</h1>
     <h2>Massaggia Pietro & Miserocchi Teo</h2>
     <div id="tableauViz" class="dashboard-container"></div>
     <script>
         // Configurazione del dashboard Tableau
         const containerDiv = document.getElementById("tableauViz");
-        const url = "https://public.tableau.com/views/DissertationMassaggiaMiserocchi/Dashboard1?:language=it-IT&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
+        const url = "https://public.tableau.com/views/DissertationMassaggiaMiserocchi/Dashboard1?:embed=true&:showVizHome=no";
         const options = {
             hideTabs: true,
             hideToolbar: true,
             width: "100%",
-            height: "1500px" // Altezza effettiva del dashboard
+            height: "1500px" // Altezza reale del dashboard per permettere lo scorrimento
         };
 
-        // Carica il dashboard
+        // Inizializzazione del dashboard
         const viz = new tableau.Viz(containerDiv, url, options);
     </script>
 </body>
