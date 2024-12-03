@@ -66,6 +66,27 @@
 
         // Inizializzazione del dashboard
         const viz = new tableau.Viz(containerDiv, url, options);
+
+        // Soluzione per abilitare lo scrolling propagato su mobile
+        containerDiv.addEventListener('touchstart', function (e) {
+            const scrollTop = containerDiv.scrollTop;
+            const scrollHeight = containerDiv.scrollHeight;
+            const offsetHeight = containerDiv.offsetHeight;
+            const contentHeight = scrollHeight - offsetHeight;
+
+            // Previeni il blocco dello scrolling
+            if (scrollTop === 0) {
+                containerDiv.scrollTop = 1;
+            } else if (scrollTop === contentHeight) {
+                containerDiv.scrollTop = contentHeight - 1;
+            }
+        });
+
+        containerDiv.addEventListener('touchmove', function (e) {
+            if (containerDiv.offsetHeight < containerDiv.scrollHeight) {
+                e.stopPropagation(); // Impedisce che lo scrolling si blocchi
+            }
+        });
     </script>
 </body>
 </html>
