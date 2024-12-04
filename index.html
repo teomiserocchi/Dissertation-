@@ -13,6 +13,9 @@
             background-color: #FFFFFF;
             color: #333;
             text-align: center;
+            height: 100vh; /* Altezza del corpo */
+            display: flex;
+            flex-direction: column; /* Disposizione verticale */
         }
 
         h1 {
@@ -34,10 +37,9 @@
 
         /* Stile per il contenitore dell'iFrame */
         iframe {
-            width: 100%;
-            height: 2000px; /* Altezza maggiore per garantire la visibilità */
+            flex-grow: 1; /* Occupa tutto lo spazio rimanente */
             border: none;
-            overflow: auto; /* Abilita lo scrolling */
+            width: 100%;
         }
     </style>
 </head>
